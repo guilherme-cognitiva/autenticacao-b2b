@@ -52,6 +52,12 @@ JwtOptions.OverrideFromEnvironment(builder.Configuration);
 var jwt = builder.Configuration.GetSection(JwtOptions.SectionName).Get<JwtOptions>()
           ?? throw new InvalidOperationException("Configuracao Jwt ausente.");
 
+if (string.IsNullOrWhiteSpace(jwt.SecretKey) || jwt.SecretKey.Length < 32)
+{
+    throw new InvalidOperationException(
+        "JWT_SECRET nao configurada ou muito curta (minimo 32 caracteres). Configure via env JWT_SECRET.");
+}
+
 builder.Services
     .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>

@@ -1,0 +1,21 @@
+# env
+.env
+.env.local
+**/.env
+**/.env.local
+
+# back-end
+**/bin/
+**/obj/
+**/out/
+**/.vs/
+
+# front-end
+**/node_modules/
+**/dist/
+**/dist-ssr/
+
+# IDE
+.vscode/
+.idea/
+.DS_Store

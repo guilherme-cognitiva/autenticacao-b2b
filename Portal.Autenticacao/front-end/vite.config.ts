@@ -15,11 +15,11 @@ export default defineConfig(({ mode }) => {
       port: 8082,
       strictPort: true,
       proxy: {
-        "/api": {
+        "/api/usuarios": {
           target: apiTarget,
           changeOrigin: true,
           secure: false,
-          rewrite: (path) => path.replace(/^\/api/, ""),
+          rewrite: (path) => path.replace(/^\/api\/usuarios/, ""),
         },
       },
     },

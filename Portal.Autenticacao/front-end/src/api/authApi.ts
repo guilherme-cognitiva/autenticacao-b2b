@@ -9,7 +9,7 @@ import type {
 } from "@/types/auth";
 
 const baseURL =
-  (import.meta.env.VITE_AUTH_API_URL as string | undefined)?.trim() || "/api";
+  (import.meta.env.VITE_AUTH_API_URL as string | undefined)?.trim() || "/api/usuarios";
 
 export const authHttp = axios.create({
   baseURL,
