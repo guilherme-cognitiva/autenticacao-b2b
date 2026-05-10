@@ -1,16 +1,16 @@
-# env
+# env (NUNCA commitar)
 .env
 .env.local
 **/.env
 **/.env.local
 
-# back-end
+# back-end .NET
 **/bin/
 **/obj/
 **/out/
 **/.vs/
 
-# front-end
+# front-end Node
 **/node_modules/
 **/dist/
 **/dist-ssr/

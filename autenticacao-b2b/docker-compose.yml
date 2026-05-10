@@ -1,7 +1,7 @@
 services:
   usuarios-service:
     build:
-      context: ./back-end/Portal.Autenticacao.Api
+      context: ./Portal.Autenticacao/back-end/Portal.Autenticacao.Api
       dockerfile: Dockerfile
     container_name: usuarios-service
     restart: unless-stopped
@@ -17,7 +17,7 @@ services:
 
   portal-front:
     build:
-      context: ./front-end
+      context: ./Portal.Autenticacao/front-end
       dockerfile: Dockerfile
       args:
         VITE_AUTH_API_URL: ${VITE_AUTH_API_URL:-/api/usuarios}
