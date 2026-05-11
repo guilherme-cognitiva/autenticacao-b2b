@@ -1,0 +1,24 @@
+# env (NUNCA commitar)
+.env
+.env.local
+**/.env
+**/.env.local
+
+# back-end .NET
+**/bin/
+**/obj/
+**/out/
+**/.vs/
+
+# front-end Node
+**/node_modules/
+**/dist/
+**/dist-ssr/
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+**/.DS_Store
+*.suo
+*.user
