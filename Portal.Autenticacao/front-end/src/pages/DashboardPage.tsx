@@ -85,13 +85,6 @@ const MODULES: ModuleCard[] = [
     href: "/logistica/",
     status: "ativo",
   },
-  {
-    key: "transportadoras",
-    title: "Transportadoras",
-    description: "Cadastro de transportadoras parceiras e suas cotações.",
-    icon: Truck,
-    status: "pendente",
-  },
 ];
 
 export default function DashboardPage() {
