@@ -82,7 +82,8 @@ const MODULES: ModuleCard[] = [
     title: "Logística",
     description: "Solicitações de frete, cotações e seleção de transportadora.",
     icon: Map,
-    status: "pendente",
+    href: "/logistica/",
+    status: "ativo",
   },
   {
     key: "transportadoras",
