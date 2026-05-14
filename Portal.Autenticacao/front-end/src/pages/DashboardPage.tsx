@@ -47,7 +47,7 @@ const MODULES: ModuleCard[] = [
     description: "Ofertas de fornecedores com preço, quantidade e local de origem.",
     icon: Store,
     href: "/fornecimentos/",
-    status: "ativo",
+    status: "pendente",
   },
   {
     key: "demanda",
@@ -63,7 +63,7 @@ const MODULES: ModuleCard[] = [
     description: "Visão consolidada de oferta x demanda do portal.",
     icon: Building2,
     href: "/mercado/",
-    status: "ativo",
+    status: "pendente",
   },
   {
     key: "negociacao",
@@ -71,7 +71,7 @@ const MODULES: ModuleCard[] = [
     description: "Processos de negociação direta, leilão direto e leilão reverso.",
     icon: Handshake,
     href: "/negociacao/",
-    status: "ativo",
+    status: "pendente",
   },
   {
     key: "pedidos",
@@ -79,7 +79,7 @@ const MODULES: ModuleCard[] = [
     description: "Pedidos confirmados e acompanhamento dos status de cada um.",
     icon: ShoppingCart,
     href: "/pedidos/",
-    status: "ativo",
+    status: "pendente",
   },
   {
     key: "logistica",
