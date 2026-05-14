@@ -54,7 +54,8 @@ const MODULES: ModuleCard[] = [
     title: "Demandas",
     description: "Necessidades de compra cadastradas pelos compradores.",
     icon: ClipboardList,
-    status: "pendente",
+    href: "/demandas/",
+    status: "ativo",
   },
   {
     key: "mercado",
