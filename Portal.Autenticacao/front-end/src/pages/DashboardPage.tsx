@@ -3,7 +3,6 @@ import {
   ShieldCheck,
   Users,
   Package,
-  Truck,
   ShoppingCart,
   Store,
   Handshake,
@@ -134,7 +133,7 @@ export default function DashboardPage() {
       <main className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-10">
         <section className="mb-8">
           <h1 className="text-2xl font-semibold tracking-tight text-primary sm:text-3xl">
-            Olá, {usuario?.nome.split(" ")[0] ?? "usuário"}!
+            Olá, {usuario?.nome?.split(" ")?.[0] ?? "usuário"}!
           </h1>
           <p className="mt-1 text-sm text-muted-foreground sm:text-base">
             Bem-vindo ao Portal B2B. Selecione um módulo abaixo para começar.
@@ -144,7 +143,7 @@ export default function DashboardPage() {
               <span className="text-xs uppercase tracking-wide text-muted-foreground">
                 Perfis da empresa:
               </span>
-              {empresa.perfis.map((p) => (
+              {empresa.perfis?.map((p) => (
                 <span
                   key={p}
                   className="rounded-md border border-primary/20 bg-accent px-2 py-0.5 text-xs font-medium text-primary"
