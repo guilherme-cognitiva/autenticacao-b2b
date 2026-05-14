@@ -12,7 +12,7 @@ import {
   ArrowUpRight,
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import { useAuthStore } from "@/lib/auth-store";
+import { useAuthStore, getAuthToken } from "@/lib/auth-store";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme-toggle";
 
@@ -102,7 +102,16 @@ export default function DashboardPage() {
 
   function handleClickModule(mod: ModuleCard) {
     if (mod.status !== "ativo" || !mod.href) return;
-    window.location.assign(mod.href);
+
+    // Padrao do Portal B2B: portal pai injeta o JWT via query string ?jwt=
+    // pra o front do MS de destino (produtos, logistica, etc.) conseguir
+    // chamar suas APIs com Authorization: Bearer <token>.
+    const token = getAuthToken();
+    const target = token
+      ? `${mod.href}${mod.href.includes("?") ? "&" : "?"}jwt=${encodeURIComponent(token)}`
+      : mod.href;
+
+    window.location.assign(target);
   }
 
   return (
