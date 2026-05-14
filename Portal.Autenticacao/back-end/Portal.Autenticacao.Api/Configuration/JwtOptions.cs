@@ -8,6 +8,7 @@ public sealed class JwtOptions
     public string Audience { get; set; } = "portal-b2b";
     public string SecretKey { get; set; } = string.Empty;
     public int ExpirationMinutes { get; set; } = 240;
+    public int ClockSkewSeconds { get; set; } = 60;
 
     public static void OverrideFromEnvironment(IConfiguration configuration)
     {
@@ -35,6 +36,12 @@ public sealed class JwtOptions
         if (int.TryParse(envExp, out var exp) && exp > 0)
         {
             section["ExpirationMinutes"] = exp.ToString();
+        }
+
+        var envClockSkew = Environment.GetEnvironmentVariable("JWT_CLOCK_SKEW_SECONDS");
+        if (int.TryParse(envClockSkew, out var skew) && skew >= 0)
+        {
+            section["ClockSkewSeconds"] = skew.ToString();
         }
     }
 }
