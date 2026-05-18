@@ -3,7 +3,6 @@ import {
   ShieldCheck,
   Users,
   Package,
-  ShoppingCart,
   Store,
   Handshake,
   ClipboardList,
@@ -51,8 +50,8 @@ const MODULES: ModuleCard[] = [
   },
   {
     key: "demanda",
-    title: "Demandas",
-    description: "Necessidades de compra cadastradas pelos compradores.",
+    title: "Demandas/Pedidos",
+    description: "Necessidades de compra e acompanhamento de pedidos.",
     icon: ClipboardList,
     href: "/demandas/",
     status: "ativo",
@@ -71,14 +70,6 @@ const MODULES: ModuleCard[] = [
     description: "Processos de negociação direta, leilão direto e leilão reverso.",
     icon: Handshake,
     href: "/negociacao/",
-    status: "ativo",
-  },
-  {
-    key: "pedidos",
-    title: "Pedidos",
-    description: "Pedidos confirmados e acompanhamento dos status de cada um.",
-    icon: ShoppingCart,
-    href: "/pedidos/",
     status: "ativo",
   },
   {
