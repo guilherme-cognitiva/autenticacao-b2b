@@ -3,6 +3,7 @@ import {
   ShieldCheck,
   Users,
   Package,
+  ShoppingCart,
   Store,
   Handshake,
   ClipboardList,
@@ -11,7 +12,7 @@ import {
   ArrowUpRight,
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import { useAuthStore } from "@/lib/auth-store";
+import { useAuthStore, getAuthToken } from "@/lib/auth-store";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme-toggle";
 
@@ -46,7 +47,7 @@ const MODULES: ModuleCard[] = [
     description: "Ofertas de fornecedores com preço, quantidade e local de origem.",
     icon: Store,
     href: "/fornecimentos/",
-    status: "ativo",
+    status: "pendente",
   },
   {
     key: "demanda",
@@ -62,7 +63,7 @@ const MODULES: ModuleCard[] = [
     description: "Visão consolidada de oferta x demanda do portal.",
     icon: Building2,
     href: "/mercado/",
-    status: "ativo",
+    status: "pendente",
   },
   {
     key: "negociacao",
@@ -70,7 +71,15 @@ const MODULES: ModuleCard[] = [
     description: "Processos de negociação direta, leilão direto e leilão reverso.",
     icon: Handshake,
     href: "/negociacao/",
-    status: "ativo",
+    status: "pendente",
+  },
+  {
+    key: "pedidos",
+    title: "Pedidos",
+    description: "Pedidos confirmados e acompanhamento dos status de cada um.",
+    icon: ShoppingCart,
+    href: "/pedidos/",
+    status: "pendente",
   },
   {
     key: "logistica",
@@ -93,7 +102,16 @@ export default function DashboardPage() {
 
   function handleClickModule(mod: ModuleCard) {
     if (mod.status !== "ativo" || !mod.href) return;
-    window.location.assign(mod.href);
+
+    // Padrao do Portal B2B: portal pai injeta o JWT via query string ?jwt=
+    // pra o front do MS de destino (produtos, logistica, etc.) conseguir
+    // chamar suas APIs com Authorization: Bearer <token>.
+    const token = getAuthToken();
+    const target = token
+      ? `${mod.href}${mod.href.includes("?") ? "&" : "?"}jwt=${encodeURIComponent(token)}`
+      : mod.href;
+
+    window.location.assign(target);
   }
 
   return (

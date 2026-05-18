@@ -70,7 +70,8 @@ builder.Services
             ValidateIssuerSigningKey = true,
             ValidIssuer = jwt.Issuer,
             ValidAudience = jwt.Audience,
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwt.SecretKey))
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwt.SecretKey)),
+            ClockSkew = TimeSpan.FromSeconds(jwt.ClockSkewSeconds)
         };
     });
 builder.Services.AddAuthorization();

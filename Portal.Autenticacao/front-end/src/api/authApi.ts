@@ -1,4 +1,5 @@
 import axios, { AxiosError } from "axios";
+import { clearAuth, getAuthToken } from "@/lib/auth-store";
 import type {
   ApiResponse,
   LoginInput,
@@ -16,13 +17,30 @@ export const authHttp = axios.create({
   headers: { "Content-Type": "application/json" },
 });
 
+// Anexa o JWT em todas as requests (token vive em sessionStorage)
 authHttp.interceptors.request.use((config) => {
-  const token = localStorage.getItem("auth_token");
+  const token = getAuthToken();
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
   }
   return config;
 });
+
+// Padrao do portal B2B: se a API responder 401, descartamos a sessao localmente
+// e jogamos o user de volta pra /login. Cobre token expirado/usuario inativado.
+authHttp.interceptors.response.use(
+  (response) => response,
+  (error: AxiosError) => {
+    if (error.response?.status === 401) {
+      const onLogin = window.location.pathname.endsWith("/login");
+      clearAuth();
+      if (!onLogin) {
+        window.location.assign("/login");
+      }
+    }
+    return Promise.reject(error);
+  },
+);
 
 export function extractApiError(err: unknown, fallback = "Erro inesperado"): string {
   if (err instanceof AxiosError) {
