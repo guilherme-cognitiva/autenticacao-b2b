@@ -46,7 +46,7 @@ const MODULES: ModuleCard[] = [
     description: "Ofertas de fornecedores com preço, quantidade e local de origem.",
     icon: Store,
     href: "/fornecimentos/",
-    status: "pendente",
+    status: "ativo",
   },
   {
     key: "demanda",
